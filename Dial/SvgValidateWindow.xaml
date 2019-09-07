@@ -1,0 +1,29 @@
+﻿<Window x:Class="Dial.SvgValidateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dial"
+        mc:Ignorable="d"
+        Title="Svg验证" Height="600" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <TextBox Name="txtSvgContent" TextWrapping="NoWrap" Text="TextBox" 
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextChanged="TxtSvgContent_TextChanged"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Name="imgShowSvg" Stretch="Uniform"></Image>
+            <Button Name="btnCommit" Content="确定" Grid.Row="1" Height="35" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Click="BtnCommit_Click"></Button>
+        </Grid>
+    </Grid>
+</Window>

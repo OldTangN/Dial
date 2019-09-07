@@ -1,0 +1,30 @@
+﻿<Window x:Class="Dial.EditTemplateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dial"
+        mc:Ignorable="d"
+        Title="编辑模板" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Width="80" HorizontalContentAlignment="Right">精度等级</Label>
+                <TextBox Width="80">123</TextBox>
+            </StackPanel>
+        </Grid>
+       
+        <!-- 回车 (&#x000D;) 换行 (&#x000A;) 空格 (&#x0020;) Tab (&#x0009;)-->
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="41,23,0,0" Width="238" Grid.Column="1"><Run Text="1、图片需要用AI导出成Path格式"/><LineBreak/><Run Text="2、&quot;text&quot;标签也是矢量的"/><LineBreak/><Run Text="3、文本坐标选用xy定位，图片使用transform=&quot;tanslate(x,y)&quot;来调整位置"/></TextBlock>
+    </Grid>
+</Window>

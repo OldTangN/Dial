@@ -1,0 +1,188 @@
+﻿<Controls:MetroWindow x:Class="Dial.SchemeWindow"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dial"
+        mc:Ignorable="d"
+        Title="方案管理" Height="600" Width="600" 
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="270"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="15 0 0 0">
+            <Label>方案名称</Label>
+            <TextBox Name="txtSachemeName" Width="80"></TextBox>
+            <Button Name="btnSearch" Click="BtnSearch_Click">查询</Button>
+        </StackPanel>
+        <Border Grid.Row="1" BorderBrush="Silver" BorderThickness="1">
+            <DataGrid Margin="0" VerticalAlignment="Stretch">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="序号" Binding="{Binding Path=Seq}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="名称" Binding="{Binding Path=Seq}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="创建时间" Binding="{Binding Path=Seq}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="修改时间" Binding="{Binding Path=Seq}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="操作员" Binding="{Binding Path=Seq}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label>方案名称</Label>
+                    <TextBox Width="200"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0">
+                    <Button Margin="10 0 5 0">清空</Button>
+                    <Button>保存</Button>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <StackPanel Orientation="Horizontal">
+                    <Label>精度等级</Label>
+                    <ComboBox Name="cmbPrecision" Height="30" Width="40" SelectedIndex="0" VerticalAlignment="Center">
+                        <ComboBox.Items>
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>1.6</ComboBoxItem>
+                        </ComboBox.Items>
+                    </ComboBox>
+
+                    <Label Margin="20 0 0 0">指针角度</Label>
+                    <ComboBox Name="cmbAngle" Height="30" Width="60" SelectedIndex="0" VerticalAlignment="Center">
+                        <ComboBox.Items>
+                            <ComboBoxItem>270</ComboBoxItem>
+                            <ComboBoxItem>180</ComboBoxItem>
+                        </ComboBox.Items>
+                    </ComboBox>
+
+                    <Label Margin="20 0 0 0">量程</Label>
+                    <TextBox Width="40">0</TextBox>
+                    <Label>至</Label>
+                    <TextBox Width="40">1.6</TextBox>
+                    <Label>Mpa</Label>
+                    <Label Margin="20 0 0 0">总分格数</Label>
+                    <TextBox Width="60"></TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+                <StackPanel Orientation="Horizontal">
+                    <Label>测量点：</Label>
+                    <TextBox Width="180" TextAlignment="Left" ToolTip="使用英文分号间隔">0;0.2;0.4;0.6;0.8;1</TextBox>
+                    <Label Margin="20 0 0 0">标注点：</Label>
+                    <TextBox Width="180" TextAlignment="Left" ToolTip="使用英文分号间隔">0;0.2;0.4;0.6;0.8;1</TextBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" BorderBrush="Silver" BorderThickness="1">
+                    <StackPanel Orientation="Vertical">
+                        <Label HorizontalAlignment="Left">长标度线：</Label>
+                        <StackPanel Orientation="Horizontal" Margin="0 2">
+                            <Label Width="60" HorizontalContentAlignment="Right">粗细</Label>
+                            <TextBox Width="60"></TextBox>
+                            <Label>mm</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 2">
+                            <Label Width="60" HorizontalContentAlignment="Right">长度</Label>
+                            <TextBox Width="60"></TextBox>
+                            <Label>mm</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 2">
+                            <Label Width="60" HorizontalContentAlignment="Right">分格数</Label>
+                            <TextBox Width="60"></TextBox>
+                            <Image Source="Images/问号.png" Width="16">
+                                <Image.ToolTip>
+                                    <Border BorderBrush="Red" BorderThickness="2">
+                                        <StackPanel>
+                                            <Label>相邻长标度线之间的分格数,例如下图分格数为“5”格</Label>
+                                            <Image Source="Images/标度线.jpg" ></Image>
+                                        </StackPanel>
+                                    </Border>
+                                </Image.ToolTip>
+                            </Image>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 2">
+                            <Label Width="60" HorizontalContentAlignment="Right">半粗线</Label>
+                            <CheckBox Name="chkIsHalfThick"></CheckBox>
+                            <Image Source="Images/问号.png" Width="16">
+                                <Image.ToolTip>
+                                    <Border BorderBrush="Red" BorderThickness="2">
+                                        <StackPanel>
+                                            <Label>半粗线如下：</Label>
+                                            <Image Source="Images/半粗线.jpg"></Image>
+                                        </StackPanel>
+                                    </Border>
+                                </Image.ToolTip>
+                            </Image>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border Grid.Column="1" BorderBrush="Silver" BorderThickness="1">
+                    <StackPanel Orientation="Vertical">
+                        <Label HorizontalAlignment="Left">中标度线：</Label>
+                        <StackPanel Orientation="Horizontal" Margin="0 2">
+                            <Label Width="60" HorizontalContentAlignment="Right">粗细</Label>
+                            <TextBox Width="60"></TextBox>
+                            <Label>mm</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 2">
+                            <Label Width="60" HorizontalContentAlignment="Right">长度</Label>
+                            <TextBox Width="60"></TextBox>
+                            <Label>mm</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 2">
+                            <Label Width="60" HorizontalContentAlignment="Right">分格数</Label>
+                            <TextBox Width="60"></TextBox>
+                            <Image Source="Images/问号.png" Width="16">
+                                <Image.ToolTip>
+                                    <Border BorderBrush="Red" BorderThickness="2">
+                                        <StackPanel>
+                                            <Label>相邻中标度线之间的分格数,例如下图分格数为“2”格，填0表示无中标度线</Label>
+                                            <Image Source="Images/标度线2.jpg" ></Image>
+                                        </StackPanel>
+                                    </Border>
+                                </Image.ToolTip>
+                            </Image>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border Grid.Column="2" BorderBrush="Silver" BorderThickness="1">
+                    <StackPanel Orientation="Vertical">
+                        <Label HorizontalAlignment="Left">短标度线：</Label>
+                        <StackPanel Orientation="Horizontal" Margin="0 2">
+                            <Label Width="60" HorizontalContentAlignment="Right">粗细</Label>
+                            <TextBox Width="60"></TextBox>
+                            <Label>mm</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 2">
+                            <Label Width="60" HorizontalContentAlignment="Right">长度</Label>
+                            <TextBox Width="60"></TextBox>
+                            <Label>mm</Label>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="3">
+            <Button HorizontalAlignment="Right" Margin="0 0 20 0">退出</Button>
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>

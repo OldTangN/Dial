@@ -1,12 +1,299 @@
-﻿<Window x:Class="Dial.MainWindow"
+﻿<Controls:MetroWindow x:Class="Dial.MainWindow"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls" 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dial"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="压力表表盘生产系统" Height="1080" Width="1920" WindowState="Maximized"
+        >
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands ShowLastSeparator="False">
+            <Button Name="btnAbout" Click="BtnAbout_Click" Content="关于" ToolTip="关于" />
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" FontSize="22">
+            <MenuItem Name="miSchemeMgt" Header="方案管理" Click="MiSchemeMgt_Click">
+            </MenuItem>
+            <MenuItem Name="miSysSettings" Header="系统设置" Click="MiSysSettings_Click">
+            </MenuItem>
+            <MenuItem Name="miHelp" Header="帮助" Click="MiHelp_Click">
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderBrush="Silver" BorderThickness="1">
+                <StackPanel>
+                    <StackPanel>
+                        <Label VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="24">方案信息</Label>
+                        <Separator></Separator>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="80" HorizontalContentAlignment="Right">方案名称：</Label>
+                            <Label>测试方案测试方案测试方案</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="80" HorizontalContentAlignment="Right">精度等级：</Label>
+                            <Label>1.0级</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="80" HorizontalContentAlignment="Right">量程：</Label>
+                            <Label>0~1.0Mpa</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="80" HorizontalContentAlignment="Right">指针角度：</Label>
+                            <Label>270°</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="80" HorizontalContentAlignment="Right">总分格数：</Label>
+                            <Label>100</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="80" HorizontalContentAlignment="Right">测量点：</Label>
+                            <Label>0;0.2;0.4;0.6;0.8;1</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="80" HorizontalContentAlignment="Right">标度点：</Label>
+                            <Label>0;0.2;0.4;0.6;0.8;1</Label>
+                        </StackPanel>
+                        <Separator></Separator>
+                        <StackPanel Orientation="Vertical">
+                            <Label HorizontalAlignment="Center" >长标度线参数</Label>
+                            <StackPanel Orientation="Horizontal" Margin="0 2">
+                                <Label Width="80" HorizontalContentAlignment="Right">粗细：</Label>
+                                <TextBox Width="60"></TextBox>
+                                <Label>mm</Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 2">
+                                <Label Width="80" HorizontalContentAlignment="Right">长度：</Label>
+                                <TextBox Width="60"></TextBox>
+                                <Label>mm</Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 2">
+                                <Label Width="80" HorizontalContentAlignment="Right">分格数：</Label>
+                                <TextBox Width="60"></TextBox>
+                                <Image Source="Images/问号.png" Width="16">
+                                    <Image.ToolTip>
+                                        <Border BorderBrush="Red" BorderThickness="2">
+                                            <StackPanel>
+                                                <Label>相邻长标度线之间的分格数,例如下图分格数为“5”格</Label>
+                                                <Image Source="Images/标度线.jpg" ></Image>
+                                            </StackPanel>
+                                        </Border>
+                                    </Image.ToolTip>
+                                </Image>
+                            </StackPanel>
+                        </StackPanel>
+                        <Separator></Separator>
+                        <StackPanel Orientation="Vertical">
+                            <Label HorizontalAlignment="Center" >中标度线参数</Label>
+                            <StackPanel Orientation="Horizontal" Margin="0 2">
+                                <Label Width="80" HorizontalContentAlignment="Right">粗细：</Label>
+                                <TextBox Width="60"></TextBox>
+                                <Label>mm</Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 2">
+                                <Label Width="80" HorizontalContentAlignment="Right">长度：</Label>
+                                <TextBox Width="60"></TextBox>
+                                <Label>mm</Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 2">
+                                <Label Width="80" HorizontalContentAlignment="Right">分格数：</Label>
+                                <TextBox Width="60"></TextBox>
+                                <Image Source="Images/问号.png" Width="16">
+                                    <Image.ToolTip>
+                                        <Border BorderBrush="Red" BorderThickness="2">
+                                            <StackPanel>
+                                                <Label>相邻中标度线之间的分格数,例如下图分格数为“2”格，填0表示无中标度线</Label>
+                                                <Image Source="Images/标度线2.jpg" ></Image>
+                                            </StackPanel>
+                                        </Border>
+                                    </Image.ToolTip>
+                                </Image>
+                            </StackPanel>
+                        </StackPanel>
+                        <Separator></Separator>
+                        <StackPanel Orientation="Vertical">
+                            <Label HorizontalAlignment="Center" >短标度线参数</Label>
+                            <StackPanel Orientation="Horizontal" Margin="0 2">
+                                <Label Width="80" HorizontalContentAlignment="Right">粗细：</Label>
+                                <TextBox Width="60"></TextBox>
+                                <Label>mm</Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 2">
+                                <Label Width="80" HorizontalContentAlignment="Right">长度：</Label>
+                                <TextBox Width="60"></TextBox>
+                                <Label>mm</Label>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <Separator></Separator>
+                    <StackPanel>
+                        <Label HorizontalAlignment="Center" FontSize="20">状态监控</Label>
+                        <Label Width="80" HorizontalContentAlignment="Right">相机1状态：</Label>
+                        <Label Width="80" HorizontalContentAlignment="Right" VerticalAlignment="Top">相机2状态：</Label>
+                        <Label Width="80" HorizontalContentAlignment="Right" VerticalAlignment="Top">相机3状态：</Label>
+                        <Label Width="80" HorizontalContentAlignment="Right" VerticalAlignment="Top">相机4状态：</Label>
+                        <Label Width="80" HorizontalContentAlignment="Right" VerticalAlignment="Top">控制器状态：</Label>
+                        <Label Width="80" HorizontalContentAlignment="Right" VerticalAlignment="Top">当前压力：</Label>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1" BorderBrush="Silver" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border  Grid.Row="0" Grid.Column="0" BorderBrush="Silver" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" HorizontalAlignment="Center" FontSize="20">表位1</Label>
+                            <Border Grid.Row="1" BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Center">
+                                <Image Width="400" Height="400" Source="Images/Pic1.bmp" Stretch="Uniform"></Image>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <Border  Grid.Row="0" Grid.Column="1" BorderBrush="Silver" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" HorizontalAlignment="Center" FontSize="20">表位2</Label>
+                            <Border Grid.Row="1" BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Center">
+                                <Image Width="400" Height="400" Source="Images/Pic1.bmp" Stretch="Uniform"></Image>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <Border  Grid.Row="0" Grid.Column="2" BorderBrush="Silver" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" HorizontalAlignment="Center" FontSize="20">表位3</Label>
+                            <Border Grid.Row="1" BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Center">
+                                <Image Width="400" Height="400" Source="Images/Pic1.bmp" Stretch="Uniform"></Image>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <Border  Grid.Row="0" Grid.Column="3" BorderBrush="Silver" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" HorizontalAlignment="Center" FontSize="20">表位4</Label>
+                            <Border Grid.Row="1" BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Center">
+                                <Image Width="400" Height="400" Source="Images/Pic1.bmp" Stretch="Uniform"></Image>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="0" BorderBrush="Silver" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Center">
+                                <Image Width="400" Height="400" Source="Images/huaqing.jpg" Stretch="Uniform"></Image>
+                            </Border>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Label FontSize="20">指针角度：</Label>
+                                <TextBox Width="100"></TextBox>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border  Grid.Row="2" Grid.Column="1" BorderBrush="Silver" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Center">
+                                <Image Width="400" Height="400" Source="Images/huaqing.jpg" Stretch="Uniform"></Image>
+                            </Border>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Label FontSize="20">指针角度：</Label>
+                                <TextBox Width="100"></TextBox>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border  Grid.Row="2" Grid.Column="2" BorderBrush="Silver" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Center">
+                                <Image Width="400" Height="400" Source="Images/huaqing.jpg" Stretch="Uniform"></Image>
+                            </Border>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Label FontSize="20">指针角度：</Label>
+                                <TextBox Width="100"></TextBox>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border  Grid.Row="2" Grid.Column="3" BorderBrush="Silver" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Center">
+                                <Image Width="400" Height="400" Source="Images/huaqing.jpg" Stretch="Uniform"></Image>
+                            </Border>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Label FontSize="20">指针角度：</Label>
+                                <TextBox Width="100"></TextBox>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label>条码：</Label>
+                        <TextBox Width="200"></TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label>条码：</Label>
+                        <TextBox Width="200"></TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label>条码：</Label>
+                        <TextBox Width="200"></TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label>条码：</Label>
+                        <TextBox Width="200"></TextBox>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+        <StatusBar Grid.Row="2">
+            <StatusBarItem HorizontalContentAlignment="Right" Padding="0 0 30 0">Copyright © 2019 元启工业技术有限公司 All Rights Reserved.</StatusBarItem>
+            <!--<Separator Style="{StaticResource MetroStatusBarSeparator}" />
+            <StatusBarItem Content="Selected Tab:"></StatusBarItem>-->
+        </StatusBar>
     </Grid>
-</Window>
+</Controls:MetroWindow>

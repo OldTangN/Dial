@@ -35,8 +35,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg, Version=2.4.3.29446, Culture=neutral, PublicKeyToken=12a0bac221edeae2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Svg.2.4.3\lib\Svg.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,7 +70,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\ImageHelper.cs" />
+    <Compile Include="Helper\MathHelper.cs" />
+    <Compile Include="SchemeWindow.xaml.cs">
+      <DependentUpon>SchemeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DialCheckPoint.cs" />
+    <Compile Include="SvgValidateWindow.xaml.cs">
+      <DependentUpon>SvgValidateWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="EditTemplateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SchemeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,12 +102,29 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="EditTemplateWindow.xaml.cs">
+      <DependentUpon>EditTemplateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestWindow.xaml.cs">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SvgValidateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\DialScaleLine.cs" />
+    <Compile Include="Model\DialScaleLineStyle.cs" />
+    <Compile Include="Model\DialRadiusStyle.cs" />
+    <Compile Include="Model\DialScheme.cs" />
+    <Compile Include="Model\Element\DialElement.cs" />
+    <Compile Include="Model\DialType.cs" />
+    <Compile Include="Model\Element\DialPathElement.cs" />
+    <Compile Include="Model\Element\DialLineElement.cs" />
+    <Compile Include="Model\LineSize.cs" />
+    <Compile Include="Model\Element\DialTextElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,6 +142,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +150,34 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DialStyle\1.png" />
+    <Resource Include="Images\DialStyle\2.png" />
+    <Resource Include="Images\DialStyle\3.png" />
+    <Resource Include="Images\DialStyle\4.png" />
+    <Resource Include="Images\DialStyle\5.png" />
+    <Resource Include="Images\DialStyle\6.png" />
+    <Resource Include="Images\DialStyle\7.png" />
+    <Resource Include="Images\DialStyle\8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Pic1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\huaqing.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\问号.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\半粗线.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\标度线.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\标度线2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
